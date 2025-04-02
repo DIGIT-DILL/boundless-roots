@@ -1,0 +1,559 @@
+@charset "utf-8";
+
+html {
+    background-color:  #F9F5F1; 
+}
+
+body {
+    width: 100%; 
+    min-height: 100vh; 
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    overflow-x: hidden;
+}
+
+
+/* Your existing styles */
+nav {
+    background-color: rgba(249, 245, 241, .9);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 14vh; 
+    padding: 0 0.75%; 
+    box-sizing: border-box; 
+    transition: height 0.3s ease; 
+    z-index: 2;
+    position: relative;
+    position: sticky; 
+    top: 0; 
+}
+
+nav .nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+    padding-left: 2%; 
+}
+
+nav .logo {
+    height: auto; 
+    max-height: 18vh; 
+    max-width: 100%;
+    width: auto;
+    margin-left: 0; 
+}
+
+nav .nav-logo:hover {
+    transform: scale(1.1); 
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end; 
+    margin: 0;
+    padding: 0;
+    align-items: center; 
+}
+
+.nav-menu li {
+    position: relative; /* Needed for dropdown */
+}
+
+.nav-menu li a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 2.75vh; 
+    padding: 0.5vw 2vw;
+    display: flex;
+    align-items: center; 
+    text-decoration: none;
+    color: #000000;
+}
+
+
+.nav-menu li a:hover {
+    text-decoration: underline;
+    text-decoration-color: #627D66;
+}
+
+/* Dropdown Menu Styling */
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown on hover */
+}
+
+.dropdown-menu {
+    display: none; /* Initially hide the dropdown */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #F9F5F1;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    min-width: 160px; /* Set a minimum width for the dropdown */
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    padding: 8px 16px;
+}
+
+.dropdown-menu li a {
+    font-size: 2.5vh;
+    color: #000000;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #627D66;
+    color: #fff;
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+    nav .logo {
+        max-height: 10vh; 
+    }
+
+    .nav-menu li a {
+        font-size: 4.5vw; 
+        padding: 0.5vw 2vw; 
+    }
+
+    nav {
+        height: 10vh; 
+        padding: 0 0.75%; 
+    }
+
+    .nav-menu {
+        flex-direction: row; 
+        justify-content: center; 
+        align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    nav .logo {
+        max-height: 10vh;
+    }
+
+    .nav-menu li a {
+        font-size: 6vw;
+    }
+
+    nav {
+        height: 12vh; 
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+
+
+
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+}
+
+.left {
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    padding: 20px;
+    display: block;
+}
+
+.right {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center all items by default */
+    padding: 20px;
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+.right h1, h2 {
+    text-align: center; /* Keep these centered */
+}
+
+.right h1 {
+    font-family: "Lora", serif;
+    color: #AF7769;
+    font-size: 5.5rem;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.right h2 {
+    font-family: "Poppins", sans-serif;
+    color: #AF7769;
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: -58px;
+}
+
+.right p {
+    font-family: "Lora", serif;
+    color: #000000;
+    font-size: 1.4rem;
+    text-align: left; 
+    margin-bottom: 5px;
+}
+
+.bold {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left; 
+}
+
+.thin {
+    font-weight: 300;
+    margin-bottom: 5px;
+    text-align: left; 
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: auto;
+    }
+    .left, .right {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    .left img {
+        aspect-ratio: 3 / 4;
+        padding-top: 10px;
+        padding-left: 16px;
+        padding-left: 16px;
+        margin-bottom: -10px;
+    }
+    .right h1 {
+        font-size: 2.7rem;
+    }
+    .right h2 {
+        font-size: 1.3rem;
+        padding-bottom: 18px;
+    }
+    .right p {
+        font-size: 1.2rem;
+        padding-left: 16px;
+        padding-right: 16px;
+        text-align: center; 
+    }
+}
+
+
+
+/* Basic button styles */
+.smooth-button {
+    padding: 10px 200px;  /* Increased left and right padding for more space */
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    background-color: #F9F5F1; 
+    color: #AF7769;
+    border: 2px solid #AF7769;  /* Border style changed for better visibility */
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for color change */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15%;
+    white-space: nowrap;  /* Ensures button text doesn't break */
+    max-width: 100%; /* Prevents the button from overflowing on smaller screens */
+}
+
+/* Hover effect */
+.smooth-button:hover {
+    background-color: #AF7769;
+    color: #F9F5F1;
+}
+
+/* Responsive design for mobile and larger screens */
+@media screen and (max-width: 600px) {
+    .smooth-button {
+        padding: 12px 40px; /* Adjusted for mobile to keep it proportional */
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .smooth-button {
+        padding: 15px 80px; /* Increased padding for larger screens */
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
+
+
+.container-inverse {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    background-color: #AF7769;
+}
+
+.left-inverse {
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-inverse img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    padding: 20px;
+    display: block;
+}
+
+.right-inverse {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center all items by default */
+    padding: 20px;
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+.right-inverse h1, h2 {
+    text-align: center; /* Keep these centered */
+}
+
+.right-inverse h1 {
+    font-family: "Lora", serif;
+    color: #F9F5F1;
+    font-size: 5.5rem;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.right-inverse h2 {
+    font-family: "Poppins", sans-serif;
+    color: #F9F5F1;
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: -58px;
+}
+
+.right-inverse p {
+    font-family: "Lora", serif;
+    color: #000000;
+    font-size: 1.4rem;
+    text-align: left; 
+    margin-bottom: 5px;
+}
+
+.bold {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left; 
+}
+
+.thin {
+    font-weight: 300;
+    margin-bottom: 5px;
+    text-align: left; 
+}
+
+@media (max-width: 768px) {
+    .container-inverse {
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: auto;
+    }
+    .left-inverse, .right-inverse {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    .left-inverse img {
+        aspect-ratio: 3 / 4;
+        padding-top: 10px;
+        padding-left: 16px;
+        padding-left: 16px;
+        margin-bottom: -10px;
+    }
+   .right-inverse h1 {
+        font-size: 2.7rem;
+    }
+    .right-inverse h2 {
+        font-size: 1.3rem;
+        padding-bottom: 18px;
+    }
+   .right-inverse p {
+        font-size: 1.2rem;
+        padding-left: 16px;
+        padding-right: 16px;
+        text-align: center; 
+    }
+}
+
+
+
+/* Basic button styles */
+.smooth-button-inverse {
+    padding: 10px 200px;  /* Increased left and right padding for more space */
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    background-color: #AF7769;
+    color: #F9F5F1;
+    border: 2px solid #F9F5F1;  /* Border style changed for better visibility */
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for color change */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15%;
+    white-space: nowrap;  /* Ensures button text doesn't break */
+    max-width: 100%; /* Prevents the button from overflowing on smaller screens */
+}
+
+/* Hover effect */
+.smooth-button-inverse:hover {
+    background-color: #F9F5F1;
+    color: #AF7769;
+}
+
+/* Responsive design for mobile and larger screens */
+@media screen and (max-width: 600px) {
+    .smooth-button-inverse {
+        padding: 12px 40px; /* Adjusted for mobile to keep it proportional */
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .smooth-button-inverse {
+        padding: 15px 80px; /* Increased padding for larger screens */
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* Main Wrapper */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Image Section */
+.image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Ensures any overflow from the image is hidden */
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Adjust this width based on your design */
+    aspect-ratio: 1; /* Ensures a square container */
+}
+
+/* Image inside the wrapper */
+.responsive-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the square area without stretching */
+}
+
+/* Text Section */
+.text-wrapper {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+/* Text Styles */
+.text-wrapper h1 {
+    font-family: "Poppins", sans-serif;
+    color: #AF7769;
+    font-size: 1.75rem;
+    font-weight: 300;
+}
+
+.text-wrapper p {
+    font-family: "Lora", serif;
+    color: #000000;
+    font-size: 1.4rem;
+    text-align: left; 
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-wrapper {
+        flex: none;
+        margin-bottom: 1rem; /* Space between image and text */
+    }
+
+    .text-wrapper h1, .text-wrapper p {
+        text-align: center;
+    }
+
+    .text-wrapper h1 {
+        font-size: 1.5rem; /* Slightly smaller text on mobile */
+    }
+
+    .text-wrapper p {
+        font-size: 1rem; /* Slightly smaller text on mobile */
+    }
+}
