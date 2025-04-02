@@ -99,7 +99,7 @@ a:link, a:visited, a:hover, a:active {
     background-color: #F9F5F1;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     min-width: 160px;
-    z-index: 1;
+    z-index: 2;
     list-style-type: none; /* Remove bullets */
     margin: 0; /* Reset default margins */
     padding: 0; /* Reset default padding */
@@ -226,10 +226,91 @@ a:link, a:visited, a:hover, a:active {
 
 
 
+/* Reset default margins and ensure full height */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* Reset default margins and ensure full height */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero section styling */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background: url('content_images/hero.png') no-repeat center center/cover; /* Local JPG file */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Semi-transparent circle with text */
+.hero-content {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack h1 and h2 vertically */
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Adjust size as needed */
+    height: 400px;
+    background: rgba(175, 119, 105, 0.8); /* Semi-transparent color */
+    border-radius: 50%; /* Makes it a circle */
+    text-align: center;
+}
+
+/* Main title styling */
+.hero-content h1 {
+    font-family: "Lora", serif;
+    color: #F9F5F1; /* White text for contrast */
+    font-size: 2rem;
+    margin: 0; /* Remove default margin */
+    padding: 0 40px; /* Add 40px padding on left and right */
+}
+
+/* Subtitle styling */
+.hero-content h2 {
+    font-family: "Lora", serif;
+    color: #F9F5F1; /* White text for contrast */
+    font-size: 1.25rem; /* Smaller than h1 */
+    margin: 10px 0 0 0; /* Small top margin for spacing */
+    padding: 0 40px; /* Add 40px padding on left and right */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content {
+        width: 275px; /* Smaller circle on mobile */
+        height: 275px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem; /* Smaller text on mobile */
+        padding: 0 20px; /* Reduce padding on mobile */
+    }
+
+    .hero-content h2 {
+        font-size: 1rem; /* Even smaller subtitle on mobile */
+        margin: 5px 0 0 0; /* Reduce spacing on mobile */
+        padding: 0 20px; /* Reduce padding on mobile */
+    }
+}
+
+
+
+
 .container {
     display: flex;
     width: 100vw;
     height: 100%;
+    background-color: #F9F5F1;
 }
 
 .left {
@@ -259,6 +340,7 @@ a:link, a:visited, a:hover, a:active {
     padding: 20px;
     margin-right: 5%;
     margin-left: 2%;
+    margin-top: 2%;
 }
 
 .right h1, 
@@ -281,6 +363,7 @@ a:link, a:visited, a:hover, a:active {
     font-size: 1.75rem;
     font-weight: 300;
     margin-bottom: 0px;
+    padding-top: 2%;
 }
 
 .right p {
@@ -289,7 +372,7 @@ a:link, a:visited, a:hover, a:active {
     font-size: 1.4rem;
     text-align: left; /* Left-aligned for desktop */
     margin-bottom: 25px;
-    width: 100%; /* Ensure the <p> takes full width to align text properly */
+    width: 100%;
 }
 
 .bold {
@@ -352,26 +435,22 @@ a:link, a:visited, a:hover, a:active {
     }
 
     .right h1 {
-        font-size: 2.7rem; /* Kept your mobile adjustment */
+        font-size: 4rem; /* Slightly smaller for mobile */
     }
 
     .right h2 {
-        font-size: 1.3rem; /* Kept your mobile adjustment */
-        padding-bottom: 5px;
+        font-size: 1.5rem;
     }
 
     .right p {
-        font-size: 1.2rem; /* Kept your mobile adjustment */
+        font-size: 1.2rem;
     }
 
-    .right .bold, 
-    .right .thin {
-        align-self: center; /* Override flex-start to center these */
+    .bold, 
+    .thin {
         padding: 0; /* Remove extra padding */
     }
 }
-
-
 
 
 
@@ -658,6 +737,7 @@ a:link, a:visited, a:hover, a:active {
     color: #AF7769;
     font-size: 1.75rem;
     font-weight: 300;
+    padding-bottom: 2.5%;
 }
 
 .text-wrapper p {
@@ -665,6 +745,7 @@ a:link, a:visited, a:hover, a:active {
     color: #000000;
     font-size: 1.4rem;
     text-align: left; 
+    padding-bottom: 2.5%;
 }
 
 /* New Certification Row */
@@ -702,16 +783,129 @@ a:link, a:visited, a:hover, a:active {
 
     .text-wrapper h1 {
         font-size: 1.5rem;
+        padding-bottom: 5.5%;
     }
 
     .text-wrapper p {
         font-size: 1rem;
+        padding-bottom: 5.5%;
     }
 
     .certification-image {
         max-width: 175px; /* Reduced from 250px (30% smaller) */
     }
 }
+
+
+
+.form-container-wide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #F9F5F1;
+}
+
+.input-wrapper-wide {
+    margin: 20px auto;
+    width: 700px; /* Wider for desktop */
+    max-width: 100%;
+    color: #F9F5F1;
+}
+
+.input-label-gap-wide {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.input-label-wide {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 1px;
+    word-wrap: break-word;
+}
+
+
+.form-input-wide {
+    font-family: "Lora", serif;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    outline: none;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    border: 2px solid #AF7769;
+    background-color: #F9F5F1;
+    color: #AF7769;
+    border-radius: 30px;
+}
+
+.form-input-wide:where(textarea) {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-input-wide:focus {
+    background-color: #AF7769;
+    color: #F9F5F1;
+    border: 2px solid #AF7769;
+}
+
+/* Mobile responsiveness - matches your original mobile styling */
+@media (max-width: 600px) {
+    .input-label-gap-wide {
+        gap: 6px;
+    }
+    
+    .input-wrapper-wide {
+        width: 90%; /* Same as original mobile */
+        margin: 15px auto;
+    }
+
+    .form-input-wide {
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 20px;
+    }
+
+    .form-input-wide:where(textarea) {
+        min-height: 80px;
+    }
+
+    .input-label-wide {
+        font-size: 12px;
+        font-weight: 300;
+        margin-bottom: 1px;
+    }
+
+
+    .form-container-wide {
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
