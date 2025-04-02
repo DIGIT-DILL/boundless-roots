@@ -16,42 +16,40 @@ body {
 }
 
 
-/* Your existing styles */
 nav {
     background-color: rgba(249, 245, 241, .9);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 14vh; 
-    padding: 0 0.75%; 
-    box-sizing: border-box; 
-    transition: height 0.3s ease; 
+    height: 14vh;
+    padding: 0 0.75%;
+    box-sizing: border-box;
+    transition: height 0.3s ease;
     z-index: 2;
-    position: relative;
-    position: sticky; 
-    top: 0; 
+    position: sticky;
+    top: 0;
 }
 
 nav .nav-logo {
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     cursor: pointer;
-    transition: transform 0.3s ease; 
-    padding-left: 2%; 
+    transition: transform 0.3s ease;
+    padding-left: 2%;
 }
 
 nav .logo {
-    height: auto; 
-    max-height: 18vh; 
+    height: auto;
+    max-height: 18vh;
     max-width: 100%;
     width: auto;
-    margin-left: 0; 
+    margin-left: 0;
 }
 
 nav .nav-logo:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -62,10 +60,10 @@ a:link, a:visited, a:hover, a:active {
 .nav-menu {
     list-style-type: none;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     margin: 0;
     padding: 0;
-    align-items: center; 
+    align-items: center;
 }
 
 .nav-menu li {
@@ -75,14 +73,13 @@ a:link, a:visited, a:hover, a:active {
 .nav-menu li a {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
-    font-size: 2.75vh; 
+    font-size: 2.75vh;
     padding: 0.5vw 2vw;
     display: flex;
-    align-items: center; 
+    align-items: center;
     text-decoration: none;
     color: #000000;
 }
-
 
 .nav-menu li a:hover {
     text-decoration: underline;
@@ -91,22 +88,26 @@ a:link, a:visited, a:hover, a:active {
 
 /* Dropdown Menu Styling */
 .dropdown:hover .dropdown-menu {
-    display: block; /* Show the dropdown on hover */
+    display: block; /* Show dropdown on hover for desktop */
 }
 
 .dropdown-menu {
-    display: none; /* Initially hide the dropdown */
+    display: none; /* Initially hidden */
     position: absolute;
     top: 100%;
     left: 0;
     background-color: #F9F5F1;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    min-width: 160px; /* Set a minimum width for the dropdown */
+    min-width: 160px;
     z-index: 1;
+    list-style-type: none; /* Remove bullets */
+    margin: 0; /* Reset default margins */
+    padding: 0; /* Reset default padding */
 }
 
 .dropdown-menu li {
     padding: 8px 16px;
+    list-style-type: none; /* Ensure no bullets on list items */
 }
 
 .dropdown-menu li a {
@@ -119,52 +120,108 @@ a:link, a:visited, a:hover, a:active {
     color: #fff;
 }
 
-/* Media Queries for responsiveness */
-@media screen and (max-width: 768px) {
-    nav .logo {
-        max-height: 10vh; 
-    }
-
-    .nav-menu li a {
-        font-size: 4.5vw; 
-        padding: 0.5vw 2vw; 
-    }
-
-    nav {
-        height: 10vh; 
-        padding: 0 0.75%; 
-    }
-
-    .nav-menu {
-        flex-direction: row; 
-        justify-content: center; 
-        align-items: center;
-    }
-
+/* Hamburger Icon */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    padding-right: 2%;
 }
 
-@media screen and (max-width: 480px) {
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #000000;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu (Hamburger Dropdown) */
+@media screen and (max-width: 768px) {
+    nav {
+        height: 12vh;
+        padding: 0 0.75%;
+        justify-content: space-between; /* Ensure logo and hamburger are spaced */
+    }
+
     nav .logo {
         max-height: 10vh;
     }
 
-    .nav-menu li a {
-        font-size: 6vw;
-    }
-
-    nav {
-        height: 12vh; 
-    }
-
     .nav-menu {
-        flex-direction: row;
-        justify-content: center;
+        display: none; /* Hide by default on mobile */
+        position: absolute;
+        top: 100%; /* Below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: rgba(249, 245, 241, .9); /* Semi-transparent white */
+        flex-direction: column;
         align-items: center;
+        padding: 20px 0;
+        z-index: 1;
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center; /* Center-align main menu items */
+    }
+
+    .nav-menu li a {
+        font-size: 4.5vw;
+        padding: 10px 0;
+        color: #000000;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        text-align: center; /* Ensure text is centered */
+        display: block; /* Full width clickable area */
+    }
+
+    /* Hamburger Icon Visible on Mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Dropdown in Hamburger */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        position: static; /* No absolute positioning in mobile */
+        width: 100%;
+        background-color: rgba(249, 245, 241, .9); /* Match hamburger bg */
+        box-shadow: none; /* Remove shadow for cleaner look */
+        padding-left: 0; /* Remove indent, center everything */
+        list-style-type: none; /* Remove bullets */
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none; /* Disable hover on mobile */
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block; /* Show when active via JS */
+    }
+
+    .dropdown-menu li {
+        padding: 8px 0;
+        text-align: center; /* Center-align dropdown items */
+    }
+
+    .dropdown-menu li a {
+        font-size: 4vw;
+        text-align: center; /* Ensure dropdown text is centered */
+        display: block; /* Full width clickable area */
     }
 }
-
-
-
 
 
 
@@ -198,14 +255,16 @@ a:link, a:visited, a:hover, a:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Center all items by default */
+    align-items: flex-start; /* Left-aligned for desktop */
     padding: 20px;
     margin-right: 5%;
     margin-left: 2%;
 }
 
-.right h1, h2 {
-    text-align: center; /* Keep these centered */
+.right h1, 
+.right h2 {
+    align-self: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 .right h1 {
@@ -213,7 +272,7 @@ a:link, a:visited, a:hover, a:active {
     color: #AF7769;
     font-size: 5.5rem;
     font-weight: 500;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .right h2 {
@@ -221,62 +280,99 @@ a:link, a:visited, a:hover, a:active {
     color: #AF7769;
     font-size: 1.75rem;
     font-weight: 300;
-    margin-bottom: -58px;
+    margin-bottom: 0px;
 }
 
 .right p {
     font-family: "Lora", serif;
     color: #000000;
     font-size: 1.4rem;
-    text-align: left; 
-    margin-bottom: 5px;
+    text-align: left; /* Left-aligned for desktop */
+    margin-bottom: 25px;
+    width: 100%; /* Ensure the <p> takes full width to align text properly */
 }
 
 .bold {
     font-weight: bold;
     margin-bottom: 5px;
-    text-align: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 .thin {
     font-weight: 300;
     margin-bottom: 5px;
-    text-align: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
+        flex-direction: column; /* Stack image on top of text */
         align-items: center;
         width: 100vw;
         height: auto;
     }
-    .left, .right {
+
+    .left {
         width: 100%;
         height: auto;
-        text-align: center;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     .left img {
+        width: 90%; /* Slightly less than 100% to add space on sides */
+        max-width: 600px; /* Optional: cap the image width */
         aspect-ratio: 3 / 4;
-        padding-top: 10px;
-        padding-left: 16px;
-        padding-left: 16px;
-        margin-bottom: -10px;
+        object-fit: cover;
+        margin: 0 5%; /* Adds space on left and right */
+        padding: 0; /* Remove padding to rely on margin for spacing */
     }
+
+    .right {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center all content */
+        padding: 20px;
+        margin: 0; /* Reset margins for mobile */
+    }
+
+    .right h1, 
+    .right h2, 
+    .right p, 
+    .right .bold, 
+    .right .thin {
+        text-align: center; /* Center all text on mobile */
+        width: 90%;
+        max-width: 600px; /* Consistent width for readability */
+    }
+
     .right h1 {
-        font-size: 2.7rem;
+        font-size: 2.7rem; /* Kept your mobile adjustment */
     }
+
     .right h2 {
-        font-size: 1.3rem;
-        padding-bottom: 18px;
+        font-size: 1.3rem; /* Kept your mobile adjustment */
+        padding-bottom: 5px;
     }
+
     .right p {
-        font-size: 1.2rem;
-        padding-left: 16px;
-        padding-right: 16px;
-        text-align: center; 
+        font-size: 1.2rem; /* Kept your mobile adjustment */
+    }
+
+    .right .bold, 
+    .right .thin {
+        align-self: center; /* Override flex-start to center these */
+        padding: 0; /* Remove extra padding */
     }
 }
+
+
+
 
 
 
@@ -294,7 +390,6 @@ a:link, a:visited, a:hover, a:active {
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    margin-top: 15%;
     white-space: nowrap;  /* Ensures button text doesn't break */
     max-width: 100%; /* Prevents the button from overflowing on smaller screens */
 }
@@ -356,14 +451,17 @@ a:link, a:visited, a:hover, a:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Center all items by default */
+    align-items: flex-start; /* Left-aligned for desktop */
     padding: 20px;
     margin-right: 5%;
     margin-left: 2%;
+    margin-top: 2%;
 }
 
-.right-inverse h1, h2 {
-    text-align: center; /* Keep these centered */
+.right-inverse h1, 
+.right-inverse h2 {
+    align-self: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 .right-inverse h1 {
@@ -371,7 +469,7 @@ a:link, a:visited, a:hover, a:active {
     color: #F9F5F1;
     font-size: 5.5rem;
     font-weight: 500;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .right-inverse h2 {
@@ -379,62 +477,98 @@ a:link, a:visited, a:hover, a:active {
     color: #F9F5F1;
     font-size: 1.75rem;
     font-weight: 300;
-    margin-bottom: -58px;
+    margin-bottom: 0px;
+    padding-top: 2%;
 }
 
 .right-inverse p {
     font-family: "Lora", serif;
     color: #000000;
     font-size: 1.4rem;
-    text-align: left; 
-    margin-bottom: 5px;
+    text-align: left; /* Left-aligned for desktop */
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .bold {
     font-weight: bold;
     margin-bottom: 5px;
-    text-align: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 .thin {
     font-weight: 300;
     margin-bottom: 5px;
-    text-align: left; 
+    text-align: left; /* Left-aligned for desktop */
 }
 
 @media (max-width: 768px) {
     .container-inverse {
-        flex-direction: column;
+        flex-direction: column; /* Stack image on top of text */
         align-items: center;
         width: 100vw;
         height: auto;
     }
-    .left-inverse, .right-inverse {
+
+    .left-inverse {
         width: 100%;
         height: auto;
-        text-align: center;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     .left-inverse img {
+        width: 90%; /* Slightly less than 100% to add space on sides */
+        max-width: 600px; /* Optional: cap the image width */
         aspect-ratio: 3 / 4;
-        padding-top: 10px;
-        padding-left: 16px;
-        padding-left: 16px;
-        margin-bottom: -10px;
+        object-fit: cover;
+        margin: 0 5%; /* Adds space on left and right */
+        padding: 0; /* Remove padding to rely on margin for spacing */
     }
-   .right-inverse h1 {
-        font-size: 2.7rem;
+
+    .right-inverse {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center all content */
+        padding: 20px;
+        margin: 0; /* Reset margins for mobile */
     }
+
+    .right-inverse h1, 
+    .right-inverse h2, 
+    .right-inverse p, 
+    .right-inverse .bold, 
+    .right-inverse .thin {
+        text-align: center; /* Center all text on mobile */
+        width: 90%;
+        max-width: 600px; /* Consistent width for readability */
+    }
+
+    .right-inverse h1 {
+        font-size: 4rem; /* Slightly smaller for mobile */
+    }
+
     .right-inverse h2 {
-        font-size: 1.3rem;
-        padding-bottom: 18px;
+        font-size: 1.5rem;
     }
-   .right-inverse p {
+
+    .right-inverse p {
         font-size: 1.2rem;
-        padding-left: 16px;
-        padding-right: 16px;
-        text-align: center; 
+    }
+
+    .bold, 
+    .thin {
+        padding: 0; /* Remove extra padding */
     }
 }
+
+
+
 
 
 
@@ -452,7 +586,6 @@ a:link, a:visited, a:hover, a:active {
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    margin-top: 15%;
     white-space: nowrap;  /* Ensures button text doesn't break */
     max-width: 100%; /* Prevents the button from overflowing on smaller screens */
 }
@@ -480,13 +613,14 @@ a:link, a:visited, a:hover, a:active {
 
 
 
+
 /* Main Wrapper */
 .content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    gap: 20px;
+    gap: 50px;
     box-sizing: border-box;
 }
 
@@ -495,18 +629,18 @@ a:link, a:visited, a:hover, a:active {
     flex: 1;
     display: flex;
     justify-content: center;
-    overflow: hidden; /* Ensures any overflow from the image is hidden */
+    overflow: hidden;
     position: relative;
     width: 100%;
-    max-width: 300px; /* Adjust this width based on your design */
-    aspect-ratio: 1; /* Ensures a square container */
+    max-width: 300px;
+    aspect-ratio: 1;
 }
 
 /* Image inside the wrapper */
 .responsive-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the square area without stretching */
+    object-fit: cover;
 }
 
 /* Text Section */
@@ -533,6 +667,23 @@ a:link, a:visited, a:hover, a:active {
     text-align: left; 
 }
 
+/* New Certification Row */
+.certification-row {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: #F9F5F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certification-image {
+    width: 100%;
+    max-width: 185px; /* Reduced from 400px (30% smaller) */
+    height: auto;
+    object-fit: contain;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .content-wrapper {
@@ -542,7 +693,7 @@ a:link, a:visited, a:hover, a:active {
 
     .image-wrapper {
         flex: none;
-        margin-bottom: 1rem; /* Space between image and text */
+        margin-bottom: 1rem;
     }
 
     .text-wrapper h1, .text-wrapper p {
@@ -550,10 +701,166 @@ a:link, a:visited, a:hover, a:active {
     }
 
     .text-wrapper h1 {
-        font-size: 1.5rem; /* Slightly smaller text on mobile */
+        font-size: 1.5rem;
     }
 
     .text-wrapper p {
-        font-size: 1rem; /* Slightly smaller text on mobile */
+        font-size: 1rem;
+    }
+
+    .certification-image {
+        max-width: 175px; /* Reduced from 250px (30% smaller) */
     }
 }
+
+
+
+
+
+
+footer {
+    width: 100%; 
+    background-color: #627D66; 
+    padding-top: 2%; 
+    padding-bottom: 2%; 
+    display: flex;
+    justify-content: center; 
+    margin-top: auto;
+}
+
+
+.footer-container {
+    width: 100%; 
+    max-width: 100%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%; 
+}
+
+
+.footer-middle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    flex: 1; 
+}
+
+
+.footer-right {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    flex: 1;
+}
+
+    
+    .footer-right a {
+        margin-left: 5%; 
+    }
+
+
+.social-icon {
+    width: 2.8vw; /* 5% of viewport width */
+    height: auto; 
+    transition: transform 0.3s ease; 
+}
+
+    .social-icon:hover {
+        transform: scale(1.1); 
+    }
+
+
+.footer-logo {
+    width: auto; 
+    max-width: 12vw;
+    height: auto;
+}
+
+
+.footer-middle p {
+    font-family: "Lora", serif;
+    font-weight: 300;
+    font-size: 1vw;
+    color: #F9F5F1;
+    text-align: center;
+}
+
+
+/* Footer Links */
+.footer-right a {
+    text-decoration: none;
+    color: #4572e3;
+    font-family: "Viga", serif;
+    font-weight: 400;
+    font-size: 2vw;
+    margin-left: 3%;
+}
+
+    .footer-right a:hover {
+        color: #f8c53a;
+    }
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    footer {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .footer-right {
+        order: 2; 
+        width: 100%; 
+        justify-content: center; 
+        margin-bottom: 5px;
+        margin-top:5px;
+    }
+
+        .footer-right a {
+            margin: 0 2%; /* Use margin as shorthand for left and right */
+            font-size: 4vw;
+        }
+
+        
+    .footer-middle p {
+        order: 1; 
+        width: 100%; /* Span full width */
+        padding-bottom: 20px;
+        justify-content: center;
+        font-size: 3.8vw;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .social-icon {
+        width: 8vw; /* Larger icons for touch devices */
+        height: auto;
+    }
+
+    .footer-logo {
+        max-width: 50vw; /* Larger logo for mobile, adjust as needed */
+        width: auto;
+        height: auto;
+    }
+
+    /* No need to adjust .fullColCarousel here since it's not part of the footer items */
+}
+
