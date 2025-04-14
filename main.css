@@ -352,7 +352,7 @@ body {
 .right h1 {
     font-family: "Lora", serif;
     color: #AF7769;
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -435,7 +435,7 @@ body {
     }
 
     .right h1 {
-        font-size: 4rem; /* Slightly smaller for mobile */
+        font-size: 2rem; /* Slightly smaller for mobile */
     }
 
     .right h2 {
@@ -499,6 +499,52 @@ body {
 
 
 
+
+/* Basic button styles */
+.smooth-button-inverse {
+    padding: 10px 200px;  /* Increased left and right padding for more space */
+    margin-top: 1%;
+    margin-bottom: 2%;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    background-color: #AF7769;
+    color: #F9F5F1;
+    border: 2px solid #F9F5F1;  /* Border style changed for better visibility */
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for color change */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;  /* Ensures button text doesn't break */
+    max-width: 100%; /* Prevents the button from overflowing on smaller screens */
+}
+
+/* Hover effect */
+.smooth-button-inverse:hover {
+    background-color: #F9F5F1;
+    color: #AF7769;
+}
+
+/* Responsive design for mobile and larger screens */
+@media screen and (max-width: 600px) {
+    .smooth-button-inverse {
+        padding: 12px 40px; /* Adjusted for mobile to keep it proportional */
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .smooth-button-inverse {
+        padding: 15px 80px; /* Increased padding for larger screens */
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
 .container-inverse {
     display: flex;
     width: 100vw;
@@ -545,7 +591,7 @@ body {
 .right-inverse h1 {
     font-family: "Lora", serif;
     color: #F9F5F1;
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -628,7 +674,7 @@ body {
     }
 
     .right-inverse h1 {
-        font-size: 4rem; /* Slightly smaller for mobile */
+        font-size: 2rem; /* Slightly smaller for mobile */
     }
 
     .right-inverse h2 {
@@ -650,53 +696,11 @@ body {
 
 
 
-/* Basic button styles */
-.smooth-button-inverse {
-    padding: 10px 200px;  /* Increased left and right padding for more space */
-    font-size: 1.2rem;
-    font-family: "Poppins", sans-serif;
-    background-color: #AF7769;
-    color: #F9F5F1;
-    border: 2px solid #F9F5F1;  /* Border style changed for better visibility */
-    border-radius: 32px;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for color change */
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;  /* Ensures button text doesn't break */
-    max-width: 100%; /* Prevents the button from overflowing on smaller screens */
-}
-
-/* Hover effect */
-.smooth-button-inverse:hover {
-    background-color: #F9F5F1;
-    color: #AF7769;
-}
-
-/* Responsive design for mobile and larger screens */
-@media screen and (max-width: 600px) {
-    .smooth-button-inverse {
-        padding: 12px 40px; /* Adjusted for mobile to keep it proportional */
-        font-size: 1rem;
-    }
-}
-
-@media screen and (min-width: 601px) {
-    .smooth-button-inverse {
-        padding: 15px 80px; /* Increased padding for larger screens */
-        font-size: 1.2rem;
-    }
-}
-
-
-
-
 /* Main Wrapper */
 .content-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Changed from center to flex-start */
+    align-items: flex-start;
     padding-bottom: 2.125rem;
     padding-top: 2.125rem;
     padding-right: 15rem;
@@ -728,7 +732,7 @@ body {
     flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Changed from center to flex-start */
+    justify-content: flex-start;
     text-align: left;
 }
 
@@ -739,14 +743,14 @@ body {
     font-size: 1.75rem;
     font-weight: 400;
     padding-bottom: 1.5%;
-    margin-top: 0; /* Added to remove default margin */
+    margin-top: 0;
 }
 
 .text-wrapper p {
     font-family: "Lora", serif;
     color: #000000;
     font-size: 1.125rem;
-    text-align: left; 
+    text-align: left;
     padding-bottom: 1.5%;
 }
 
@@ -771,37 +775,54 @@ body {
 @media (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;
-        text-align: center;
-        align-items: center; /* Changed for mobile view */
+        align-items: center;
+        padding: 2rem 1rem; /* Reduced side padding for mobile */
+        gap: 1.5rem; /* Increased gap for better spacing */
     }
 
     .image-wrapper {
         flex: none;
-        margin-bottom: 1rem;
+        max-width: 100%; /* Allow image to take full width */
+        margin-bottom: 1.5rem; /* More space below image */
+    }
+
+    .responsive-image {
+        max-width: 300px; /* Keep image size reasonable */
+        width: 100%;
     }
 
     .text-wrapper {
-        justify-content: center; /* Reset for mobile */
-    }
-
-    .text-wrapper h1, .text-wrapper p {
-        text-align: center;
+        width: 100%; /* Ensure text takes full width */
+        justify-content: flex-start;
+        text-align: left; /* Align text left for better readability */
+        padding: 0 1rem; /* Add padding to prevent text from touching edges */
+        box-sizing: border-box;
     }
 
     .text-wrapper h1 {
         font-size: 1.5rem;
-        padding-bottom: 5.5%;
+        padding-bottom: 0.75rem; /* Adjusted for better spacing */
+        text-align: left;
     }
 
     .text-wrapper p {
         font-size: 1rem;
-        padding-bottom: 5.5%;
+        padding-bottom: 0.75rem; /* Adjusted for better spacing */
+        text-align: left;
+    }
+
+    .certification-row {
+        padding: 1.5rem 0; /* Adjust padding for mobile */
     }
 
     .certification-image {
         max-width: 105px;
     }
 }
+
+
+
+
 
 .form-container-wide {
     display: flex;
@@ -906,6 +927,8 @@ body {
 .full-col {
     width: 100%;
     padding: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: #f5f5f5;
     text-align: center;
     overflow-x: hidden; /* Prevents horizontal overflow */
@@ -939,7 +962,7 @@ body {
 .full-col h2 {
     font-family: "Lora", sans-serif;
     color: #AF7769;
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: 600;
     padding-bottom: 3.5%;
     padding-top: 1%;
@@ -979,10 +1002,13 @@ body {
     margin: 10px 0; /* Adds a bit of spacing above and below the gap */
 }
 
+
 /* Mobile-specific adjustments */
 @media screen and (max-width: 600px) {
     .full-col {
         padding: 15px 0; /* Vertical padding only */
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     .full-col p {
