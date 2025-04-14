@@ -1179,7 +1179,6 @@ footer {
 
 
 
-
 @media screen and (max-width: 768px) {
     footer {
         padding-top: 2.5%;
@@ -1196,40 +1195,42 @@ footer {
     }
 
     .footer-right {
-        order: 2; 
-        width: 100%; 
-        justify-content: center; 
+        order: 1; /* Appears first (top) */
+        width: 100%;
+        justify-content: center;
         margin-bottom: 5px;
-        margin-top:5px;
+        margin-top: 20px;
     }
 
-        .footer-right a {
-            margin: 0 2%; /* Use margin as shorthand for left and right */
-            font-size: 4vw;
-        }
+    .footer-right a {
+        margin: 0 2%;
+        font-size: 4vw;
+    }
 
-        
-    .footer-middle p {
-        order: 1; 
-        width: 100%; /* Span full width */
-        padding-bottom: 20px;
+    .footer-middle {
+        order: 2; /* Appears second, below footer-right */
+        width: 100%;
         justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .footer-middle p {
+        width: 100%;
         font-size: 3.8vw;
-        padding-left: 2%;
-        padding-right: 2%;
+        padding-left: 13.5%;
+        padding-right: 13.5%;
     }
 
     .social-icon {
-        width: 8vw; /* Larger icons for touch devices */
+        order: 3; /* Appears third */
+        width: 8vw;
         height: auto;
     }
 
     .footer-logo {
-        max-width: 50vw; /* Larger logo for mobile, adjust as needed */
+        order: 4; /* Appears last */
+        max-width: 50vw;
         width: auto;
         height: auto;
     }
-
-    /* No need to adjust .fullColCarousel here since it's not part of the footer items */
 }
-
