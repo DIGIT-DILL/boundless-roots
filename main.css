@@ -1,0 +1,938 @@
+@charset "utf-8";
+
+html {
+  background-color: #000;  /* default fallback */
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Page-specific override */
+body.about-page {
+  background-color: #1F1F1F !important; /* force overwrite */
+}
+
+/* Shared gutter so nav aligns with hero/newsletter/footer */
+:root{
+  --page-gutter: clamp(16px, 5vw, 64px);
+  --nav-bg: #000;               /* black bar like your mock */
+  --nav-top: #FFC300;           /* yellow top rule */
+  --nav-height: 64px;           /* desktop height */
+}
+
+/* ===== NAV BAR ===== */
+nav{
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--page-gutter);
+  box-sizing: border-box;
+  border-top: 6px solid var(--nav-top);
+  border-bottom: 3px solid var(--nav-bottom);
+}
+
+/* Left: logo */
+nav .nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;  /* remove underline */
+  cursor: pointer;
+}
+
+nav .logo {
+  display: block;
+  height: auto;
+  max-height: calc(var(--nav-height) - 22px);
+  width: auto;
+}
+nav .logo-link{ display: inline-block; text-decoration: none; cursor: pointer; }
+
+/* Hover swap to alternate logo image */
+nav .logo-link:hover .logo{
+  content: url("content_images/logo_alt.png");
+}
+
+/* Right: links */
+.nav-menu{
+  list-style: none;
+  display: flex;
+  gap: clamp(10px, 2.5vw, 28px);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu .divider{
+  color: #fff; opacity: .9;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.nav-menu li a{
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(14px, 1.8vw, 22px);
+  letter-spacing: .02em;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 2px;
+  transition: color .15s ease;
+}
+.nav-menu li a:hover{ color: #FFC300; }
+
+/* Optional CTA button */
+.contact-button{
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; cursor: pointer; transition: background .2s ease;
+}
+.contact-button:hover{ background: #85A947; color: #fff; }
+
+/* Scope link color to nav only */
+nav a{ color: inherit; }
+
+/* ===== Responsive ===== */
+
+/* Tablet & below */
+@media (max-width: 768px){
+  :root { --nav-height: 56px; }   /* shorter bar */
+  nav { height: var(--nav-height); }
+
+  /* Force smaller logo on mobile */
+  nav .logo{
+    height: 38px;       /* fixed size */
+    max-height: none;   /* neutralize desktop rule */
+    width: auto;
+  }
+
+  .nav-menu{ gap: clamp(8px, 3vw, 18px); }
+  .nav-menu li a{
+    font-size: clamp(16px, 3.8vw, 20px);
+    padding: 6px 4px;
+  }
+
+  .contact-button{
+    height: 36px; line-height: 36px; font-size: 15px; padding: 0 16px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px){
+  :root { --nav-height: 50px; }
+  nav { height: var(--nav-height); }
+
+  nav .logo{
+    height: 30px;       /* even smaller on very small devices */
+    max-height: none;
+  }
+
+  .nav-menu{ gap: clamp(6px, 4vw, 14px); }
+  .nav-menu li a{ font-size: clamp(16px, 4.4vw, 18px); }
+}
+
+
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;        /* keeps overlay effects contained if you add any */
+  z-index: 3;                /* <- ensure hero sits above newsletter art */
+}
+
+.hero__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Desktop overlay layout */
+.hero__content {
+  position: absolute;
+  top: 50%;
+  left: var(--page-gutter);          /* was 5% */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+.hero h1 {
+font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  margin: 0 0 0.75rem 0;
+}
+
+.hero .btn {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: #FFC300;      /* yellow background */
+  color: #000;                    /* black text */
+  font-size: clamp(16px, 1.8vw, 24px);
+  font-weight: 700;
+  padding: 14px 28px;
+  border: none;                   /* no border */
+  border-radius: 0;               /* sharp corners */
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, transform .08s ease-out;
+}
+
+.hero .btn:hover {
+  background-color: #000;         /* flip to black background */
+  color: #FFC300;                 /* yellow text */
+}
+
+.hero .btn:active {
+  transform: translateY(1px);     /* subtle press effect */
+}
+
+.hero .btn:focus-visible {
+  outline: 3px solid #FFC300;
+  outline-offset: 3px;
+}
+.hero .sub {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  font-size: clamp(14px, 1.4vw, 18px);
+  opacity: .9;
+  margin: .5rem 0 0 0;
+}
+
+/* ===== Mobile: stack image then content below ===== */
+@media (max-width: 768px) {
+  .hero {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .hero__content {
+    position: static;        /* remove absolute overlay */
+    top: auto;               /* reset top */
+    left: auto;              /* reset left */
+    transform: none;         /* stop vertical centering */
+    padding: 16px;
+    margin: 0 auto;
+    align-items: center;     /* center horizontally */
+    text-align: center;      /* center text/buttons */
+  }
+
+  .hero .btn {
+    font-size: 16px;
+    padding: 12px 18px;
+    border-width: 2px;
+  }
+}
+
+/* Optional: very small screens */
+@media (max-width: 420px) {
+  .hero h1 { font-size: 20px; }
+  .hero .btn { font-size: 14px; padding: 10px 16px; }
+}
+
+
+
+.platform-links {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* spacing between website text and icons */
+}
+
+.platform-links a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+/* Hover effect only on the website link */
+.platform-links .main-link:hover {
+  color: #FFC300; /* yellow hover */
+}
+
+/* Platform icons (non-clickable) */
+.platform-icon {
+  width: 20px;   /* about emoji size */
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+/* ==== Newsletter (final) ==== */
+
+.newsletter {
+  position: relative;  /* so the ::before can anchor */
+  background: #1c1a1a;
+  color: #F5F5F5;
+  overflow: visible;
+  /* remove border-top if you had one */
+  border-top: none;
+}
+
+.newsletter::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 6px;              /* match navbar thickness */
+  background: #FFC300;      /* same yellow */
+  z-index: 5;               /* above dots */
+}
+
+/* Left block: copy + form */
+/* Left block: copy + form */
+.newsletter__inner{
+  position: relative;
+  z-index: 2;
+
+  /* match blog grid’s centered container */
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* same vertical padding as before */
+  padding: clamp(20px, 4vw, 40px) 0;
+
+  /* align left edge to the page gutter */
+  padding-left: var(--page-gutter);
+
+  /* RESERVE space for the dots art + right gutter
+     so text/form never flow under the art */
+  padding-right: calc(var(--page-gutter) + min(660px, 48vw));
+}
+
+
+.newsletter__inner h2{
+  font: 800 clamp(20px, 3.2vw, 28px)/1.1 "Poppins", sans-serif;
+  color: #FFC300;
+  margin: 0 0 .4rem 0;
+  letter-spacing: .02em;
+}
+
+/* Force multi-line copy with a readable measure */
+.newsletter__inner p{
+  font: 500 clamp(14px, 1.5vw, 18px)/1.6 "Roboto Mono", monospace;
+  color: #FFC300;
+  margin: 0 0 1rem 0;
+  max-width: 48rem;          /* ~768px; creates 2–3 lines like your mock */
+  word-wrap: break-word;
+}
+
+.newsletter__form {
+  display: grid;
+  grid-template-columns: 1fr auto;   /* input expands, button auto-width */
+  gap: 0;                            /* remove spacing to align flush */
+  align-items: stretch;              /* force same height */
+  max-width: 560px;
+}
+
+/* Input field */
+.newsletter__form input[type="email"] {
+  background: #1c1a1a;
+  color: #FFC300;
+  font: 600 16px/1.2 "Roboto Mono", monospace;
+  border: 2px solid #FFC300;
+  border-radius: 0;                   /* square */
+  padding: 0 14px;                    /* no vertical padding */
+  height: 48px;                       /* fixed height */
+  box-sizing: border-box;             /* include border in height */
+  outline: none;
+}
+
+.newsletter__form input::placeholder {
+  color: #B2912B;
+}
+
+.newsletter__form input:focus {
+  border-color: #1a73e8;               /* blue on focus */
+  box-shadow: 0 0 0 2px rgba(26,115,232,.5);
+}
+
+/* Submit button */
+.nl-btn {
+  font: 800 16px/1 "Roboto Mono", monospace;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background: #FFC300;
+  color: #000;
+  padding: 0 20px;                     /* horizontal padding only */
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  height: 48px;                        /* match input height */
+  box-sizing: border-box;
+  transition: background-color .2s ease, color .2s ease, transform .08s ease-out;
+}
+
+.nl-btn:hover {
+  background: #000;
+  color: #FFC300;
+}
+
+.nl-btn:active {
+  transform: translateY(1px);
+}
+
+.nl-btn:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+
+
+/* Right-side dots art — larger, flush right, tucked under hero */
+.newsletter__art{
+  position: absolute;
+  top: -16px;                /* lift so it creeps under the hero border */
+  right: 0;
+  z-index: 1;                /* below .newsletter__inner (2), below .hero (3) */
+  pointer-events: none;      /* never block clicks */
+}
+.newsletter__art img{
+  display: block;
+  width: min(660px, 48vw);   /* oversize so it crops slightly */
+  max-width: none;
+  transform: translateX(6%); /* push a bit off-screen to crop on the right */
+}
+
+/* Screen-reader helper (if you used .sr-only on the label) */
+.sr-only{
+  position: absolute !important;
+  height: 1px; width: 1px; overflow: hidden;
+  clip: rect(1px,1px,1px,1px); white-space: nowrap;
+  border: 0; padding: 0; margin: -1px;
+}
+
+@media (max-width: 768px){
+  .newsletter__inner{
+    padding: 16px var(--page-gutter);
+  }
+
+  /* Keep input + button side by side */
+  .newsletter__form {
+    grid-template-columns: 1fr auto;  /* input stays left, button right */
+    max-width: 100%;
+  }
+
+  .newsletter__form input[type="email"] {
+    font-size: 14px;
+    height: 40px;   /* slightly smaller */
+  }
+
+  .nl-btn {
+    font-size: 14px;
+    height: 40px;   /* match input */
+    padding: 0 14px;
+  }
+
+  .newsletter__art {
+    position: static;
+    margin-top: 8px;
+    z-index: 0;
+    pointer-events: auto;
+  }
+  .newsletter__art img {
+    width: 100vw;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+/* Shared gutter variable (matches the rest of your site) */
+:root { --page-gutter: clamp(16px, 5vw, 64px); }
+
+/* ===== About ===== */
+.about{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;                 /* safe fallback behind the image */
+  isolation: isolate;
+  /* optional: yellow rule on top like other sections */
+  /* border-top: 6px solid #FFD31D; */
+}
+
+.about__media img {
+  display: block;
+  width: 100%;        /* stretch across viewport */
+  height: auto;       /* keep full image height */
+  max-width: 100%;
+  object-fit: contain; /* ensures full image shows without cropping */
+}
+
+/* overlay content (left + vertically centered) */
+.about__content{
+  position: absolute;
+  left: var(--page-gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 560px;
+  color: #fff;
+  display: grid;
+  gap: 12px;
+}
+
+/* optional readable backdrop on dark images */
+.about__content::before{
+  content: "";
+  position: absolute;
+  inset: -16px -24px -16px -24px;   /* pad around text */
+  background: linear-gradient(90deg, rgba(0,0,0,.65), rgba(0,0,0,0));
+  z-index: -1;
+}
+
+/* Typography – using your fonts */
+.about__title{
+  font-family: "Roboto Mono", monospace;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: .02em;
+  color: #FFC300;
+  margin: 0;
+}
+
+.about__body{
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.65;
+  margin: 0;
+  color: #EDEDED;
+}
+
+/* ===== Mobile: stack text under the image for readability ===== */
+@media (max-width: 768px) {
+.about__media img {
+  display: block;
+  width: 100%;   /* always scale to screen width */
+  height: auto;  /* keep natural aspect ratio */
+  max-width: 100%;
+}
+
+  .about__content {
+    position: static;
+    transform: none;
+    padding: 16px var(--page-gutter) 24px;
+    max-width: 720px;
+  }
+
+
+  .about__content::before{
+    content: none;                  /* no overlay block when stacked */
+  }
+  
+}
+
+
+:root{
+  --gutter: clamp(16px, 5vw, 64px);
+  --black: #000000;
+  --card: #000000;
+  --card-2: #1c1a1a;
+  --ink: #EDEDED;
+  --muted: #CFCFCF;
+  --yellow: #FFC300;
+
+  --blog-max: 1440px;
+  --blog-gap: 20px;
+  --title-h: 36px;
+  --title-bw: 1.5px;
+}
+
+body { background:#000; }
+
+/* Section */
+.blog{
+  background: var(--black);
+  padding-block: 28px 44px;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  margin: 0;
+}
+
+.blog-grid{
+  width: 100%;
+  max-width: var(--blog-max);
+  margin-inline: auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--blog-gap);
+  box-sizing: border-box;
+}
+
+/* Card */
+.post{
+  background: var(--card-2);
+  border: 2px solid transparent;
+  padding: 10px;
+  transition: border-color .2s ease, background-color .2s ease;
+  box-sizing: border-box;
+}
+
+/* Only outline the card when image or READ is hovered */
+.post:has(.post__media:hover),
+.post:has(.post__read:hover){
+  background: #000;
+  border-color: var(--yellow);
+}
+
+/* Anchor stays non-click-looking; only image/read show pointer */
+.post__link{ display:block; color:inherit; text-decoration:none; cursor: default; }
+
+/* Date strip */
+.post__date{
+  background: var(--yellow);
+  color: #000;
+  font: 800 11px/1 "Roboto Mono", monospace;
+  letter-spacing:.02em;
+  padding: 6px 10px;
+}
+
+/* Media */
+.post__media{
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  background:#000;
+  cursor: pointer;
+}
+.post__media img{
+  width:100%; height:100%; object-fit:cover;
+  transition: filter .25s ease, transform .25s ease;
+}
+.post__media:hover img{ filter: blur(3px); transform: scale(1.02); }
+
+/* Center hover circle with your PNG icon */
+.post__media-hit{
+  position:absolute; inset:0; display:grid; place-items:center;
+  pointer-events:none; opacity:0; transition: opacity .2s ease;
+}
+.post__media:hover .post__media-hit{ opacity:1; }
+
+@media (max-width: 640px) {
+  .post__media-hit img {
+    width: 36px;   /* smaller for phones */
+    height: 36px;
+  }
+}
+
+.launch-circle{
+  width:66px; height:66px;
+  border-radius:50%;
+  background: var(--yellow);
+  display:inline-grid; place-items:center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+.launch-circle::before{
+  content:"";
+  width:30px; height:30px;
+  background: url("content_images/link_icon.png") center / contain no-repeat;
+  display:block;
+}
+
+/* Title row */
+.post__titleBar{
+  display:flex; align-items:center; justify-content:space-between;
+  background: var(--yellow);
+  color:#000;
+  height: var(--title-h);
+  border: var(--title-bw) solid transparent;  /* single frame for whole row */
+  box-sizing: border-box;
+}
+.post__title{
+  margin:0;
+  font: 900 18px/1 "Poppins", sans-serif;
+  letter-spacing:.01em;
+  padding: 0 12px;
+  display:flex; align-items:center;
+  flex: 1;
+}
+
+/* READ chip */
+.post__read{
+  --padX: 16px;
+  display:inline-flex; 
+  align-items:center; 
+  gap:8px;
+  height: calc(var(--title-h) - var(--title-bw)*2);
+  padding: 0 var(--padX);
+  background:#000; 
+  color: var(--yellow);
+  cursor: pointer;
+  font: 900 14px/1 "Roboto Mono", monospace;
+  text-decoration: none;   /* no underline */
+  transition: padding .15s ease, letter-spacing .15s ease;
+}
+
+/* Label hover (slight tracking only) */
+.post__readLabel{ 
+  letter-spacing: 0; 
+  transition: letter-spacing .15s ease; 
+}
+.post__read:hover .post__readLabel,
+.post:has(.post__media:hover) .post__read .post__readLabel{
+  letter-spacing: .4px;
+}
+
+/* Right-pointing triangle (slightly smaller) */
+.post__arrow{
+  display:inline-block;
+  margin-left: 4px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid currentColor;
+  transition: transform .2s ease;
+}
+
+/* On hover: slide arrow right (no rotation) */
+.post__read:hover .post__arrow,
+.post:has(.post__media:hover) .post__arrow{
+  transform: translateX(4px);
+}
+
+/* Excerpt row */
+.post__excerptRow{
+  display:flex; align-items:flex-start; gap:14px;
+  padding: 12px 12px 14px;
+}
+.post__avatar{
+  width:54px; height:54px; object-fit:cover;
+  border: 3px solid var(--yellow);
+  background:#000;
+}
+.post__preview{
+  margin:0; color:var(--ink);
+  font: 400 14px/1.5 "Roboto Mono", monospace;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* Responsive */
+@media (max-width: 1200px){
+  .blog-grid{ max-width: 95vw; }
+}
+@media (max-width: 1024px){
+  .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .blog-grid{ grid-template-columns: 1fr; }
+  .post__title{ font-size:16px; }
+  .post__preview{ -webkit-line-clamp:4; }
+  :root{ --title-h: 34px; }
+}
+
+
+footer {
+    width: 100%; 
+    background-color: #000000; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    display: flex;
+    justify-content: center; 
+    margin-top: auto;
+    z-index: 3;
+}
+
+
+.footer-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--page-gutter);   /* was 16px or 2% */
+  padding-right: var(--page-gutter);  /* keep symmetric */
+  margin: 0 auto;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    flex: 1; 
+}
+
+
+.footer-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; 
+}
+
+
+.footer-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  gap: -10px;   /* small fixed spacing between icons */
+}
+
+.footer-right a {
+  margin: 0;   /* kill old spacing */
+  padding: 0;
+}
+
+.footer-right a:first-child {
+  margin-left: 0;
+}
+
+.social-icon {
+  position: relative;
+  z-index: 5;
+  width: 1.5vw;  /* keep size */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+    .social-icon:hover {
+        transform: scale(1.1); 
+    }
+
+
+.footer-logo {
+    width: auto; 
+    max-width: 12vw;
+    height: auto;
+}
+
+
+.footer-left p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 0.75vw;
+    color: #fff;
+    text-align: center;
+}
+
+
+/* Footer Links */
+.footer-right a {
+    text-decoration: none;
+    color: #4572e3;
+    font-family: "Viga", serif;
+    font-weight: 400;
+    font-size: 2vw;
+    margin-left: 3%;
+}
+
+    .footer-right a:hover {
+        color: #f8c53a;
+    }
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    footer {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .footer-right {
+        order: 1; 
+        width: 100%; 
+        justify-content: center; 
+        margin-bottom: 5px;
+        margin-top:5px;
+    }
+
+        .footer-right a {
+            margin: 0 2%; /* Use margin as shorthand for left and right */
+            font-size: 3vw;
+        }
+
+        
+    .footer-left {
+        order: 2; 
+        width: 100%; 
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+
+    .footer-left p {
+        font-size: 3vw; /* Increase font size for better visibility */
+    }
+
+
+    .footer-middle {
+        order: 3; /* Copyright text at the bottom */
+        width: 100%; /* Span full width */
+        padding-bottom: 20px;
+    }
+
+    .social-icon {
+        width: 8vw; /* Larger icons for touch devices */
+        height: auto;
+    }
+
+    .footer-logo {
+        max-width: 50vw; /* Larger logo for mobile, adjust as needed */
+        width: auto;
+        height: auto;
+    }
+
+    /* No need to adjust .fullColCarousel here since it's not part of the footer items */
+}
+

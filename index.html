@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<title>LUMINOUS BITS</title>
+	<link rel="icon" href="content_images/web_icon.png" type="image/png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <link href="main.css" rel="stylesheet" type="text/css">
+
+
+<style>
+    body {
+    width: 100%; 
+    min-height: 100vh; 
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+</style>
+
+
+</head>
+
+
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img class="logo" src="content_images/logo.png" alt="Luminous Bits">
+  </a>
+
+  <ul class="nav-menu">
+    <li><a href="blog.html">BLOG</a></li>
+    <li><span class="divider">|</span></li>
+    <li><a href="about.html">ABOUT</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+<div class="hero__media">
+  <picture>
+    <!-- Mobile version -->
+    <source srcset="content_images/hero_mobile.png" media="(max-width: 768px)">
+    <!-- Default (desktop) -->
+    <img src="content_images/hero_desktop.png" alt="Hero background">
+  </picture>
+</div>
+
+  <div class="hero__content">
+    <h1>DEVOID IS IN DEVELOPMENT</h1>
+    <a href="https://your-journey-link.com" class="btn">EMBARK ON YOUR JOURNEY ▶</a>
+
+    <!-- Platform links block -->
+    <p class="platform-links">
+      <a href="https://your-devoid-site.com" class="main-link">DEVOID WEBSITE</a> |
+      <img src="content_images/windows.png" alt="Windows" class="platform-icon">
+      <img src="content_images/mac.png" alt="macOS" class="platform-icon">
+      <!-- add Linux later -->  
+    </p>
+  </div>
+</section>
+
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <!-- Left block: copy + form -->
+  <div class="newsletter__inner">
+    <h2>STAY IN ORBIT</h2>
+    <p>It’s easy to get lost in space… join the newsletter for important intel like early announcements and game updates.</p>
+
+    <form class="newsletter__form" method="post" action="/subscribe">
+      <label class="sr-only" for="nl-email">Email address</label>
+      <input id="nl-email" name="email" type="email" inputmode="email"
+             autocomplete="email" placeholder="you@domain.com" required />
+      <button type="submit" class="nl-btn">JOIN NOW <span aria-hidden="true">▶</span></button>
+    </form>
+  </div>
+
+  <!-- Right block: dots artwork -->
+  <div class="newsletter__art">
+    <picture>
+      <!-- swap to mobile art under 768px -->
+      <source media="(max-width: 768px)" srcset="content_images/newsletter_art_mobile.png">
+      <img src="content_images/newsletter_art_desktop.png" alt="" role="presentation">
+    </picture>
+  </div>
+</section>
+
+
+
+
+
+	<footer>
+		<div class="footer-container">
+
+			<div class="footer-left">
+				<p>COPYRIGHT © 2025 LUMINOUS BITS INC. ALL RIGHTS RESERVED. </p>
+			</div>
+
+			<div class="footer-right">
+				<a href="content_images/facebook.png" target="_blank">
+					<img src="content_images/facebook.png" alt="Facebook" class="social-icon">
+				</a>
+				<a href="content_images/instagram.png" target="_blank">
+					<img src="content_images/instagram.png" alt="Instagram" class="social-icon">
+				</a>
+			</div>
+
+		</div>
+	</footer>
+
+</body>
+
+</html>
