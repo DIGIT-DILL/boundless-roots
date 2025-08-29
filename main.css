@@ -337,7 +337,7 @@ font-family: "Poppins", sans-serif;
 
 .newsletter__inner h2{
   font: 800 clamp(20px, 3.2vw, 28px)/1.1 "Poppins", sans-serif;
-  color: #FFC300;
+  color: #FFFFFF;
   margin: 0 0 .4rem 0;
   letter-spacing: .02em;
 }
@@ -523,8 +523,8 @@ font-family: "Poppins", sans-serif;
 
 /* Typography – using your fonts */
 .about__title{
-  font-family: "Roboto Mono", monospace;
-  font-weight: 800;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
   font-size: clamp(28px, 4vw, 44px);
   letter-spacing: .02em;
   color: #FFC300;
@@ -779,7 +779,6 @@ footer {
     z-index: 3;
 }
 
-
 .footer-container {
   width: 100%;
   display: flex;
@@ -792,11 +791,11 @@ footer {
 
 .footer-left {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* stack contact + copyright */
+    align-items: flex-start;
     justify-content: flex-start; 
     flex: 1; 
 }
-
 
 .footer-middle {
     display: flex;
@@ -804,7 +803,6 @@ footer {
     justify-content: center;
     flex: 1; 
 }
-
 
 .footer-right {
   display: flex;
@@ -831,10 +829,9 @@ footer {
   transition: transform 0.3s ease;
 }
 
-    .social-icon:hover {
-        transform: scale(1.1); 
-    }
-
+.social-icon:hover {
+  transform: scale(1.1); 
+}
 
 .footer-logo {
     width: auto; 
@@ -842,15 +839,21 @@ footer {
     height: auto;
 }
 
+/* Text styles */
+.footer-contact {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 0.8vw;
+    color: #bbbbbb; /* lighter gray for Contact Us */
+    margin-bottom: 2px; /* slightly closer gap */
+}
 
-.footer-left p {
+.footer-copyright {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-size: 0.75vw;
-    color: #fff;
-    text-align: center;
+    color: #888888; /* darker gray for copyright */
 }
-
 
 /* Footer Links */
 .footer-right a {
@@ -862,19 +865,16 @@ footer {
     margin-left: 3%;
 }
 
-    .footer-right a:hover {
-        color: #f8c53a;
-    }
-
+.footer-right a:hover {
+    color: #f8c53a;
+}
 
 * {
     margin: 0;
     padding: 0;
 }
 
-
-
-
+/* Responsive */
 @media screen and (max-width: 768px) {
     footer {
         padding-top: 2.5%;
@@ -895,26 +895,30 @@ footer {
         width: 100%; 
         justify-content: center; 
         margin-bottom: 5px;
-        margin-top:5px;
+        margin-top: 5px;
     }
 
-        .footer-right a {
-            margin: 0 2%; /* Use margin as shorthand for left and right */
-            font-size: 3vw;
-        }
+    .footer-right a {
+        margin: 0 2%; /* Use margin as shorthand for left and right */
+        font-size: 3vw;
+    }
 
-        
     .footer-left {
         order: 2; 
         width: 100%; 
         margin-bottom: 5px;
         justify-content: center;
+        align-items: center;
     }
 
-    .footer-left p {
-        font-size: 3vw; /* Increase font size for better visibility */
+    .footer-contact {
+        font-size: 3vw;
+        margin-bottom: 2px; /* keep tighter on mobile too */
     }
 
+    .footer-copyright {
+        font-size: 2.8vw;
+    }
 
     .footer-middle {
         order: 3; /* Copyright text at the bottom */
@@ -932,7 +936,4 @@ footer {
         width: auto;
         height: auto;
     }
-
-    /* No need to adjust .fullColCarousel here since it's not part of the footer items */
 }
-
