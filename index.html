@@ -58,11 +58,11 @@
 
   <div class="hero__content">
     <h1>DEVOID IS IN DEVELOPMENT</h1>
-    <a href="https://your-journey-link.com" class="btn">EMBARK ON YOUR JOURNEY ▶</a>
+    <a href="https://luminous-bits.itch.io/devoid" class="btn">EMBARK ON YOUR JOURNEY ▶</a>
 
     <!-- Platform links block -->
     <p class="platform-links">
-      <a href="https://your-devoid-site.com" class="main-link">DEVOID WEBSITE</a> |
+      <a href="https://devoidgame.com/" class="main-link">DEVOID WEBSITE</a> |
       <img src="content_images/windows.png" alt="Windows" class="platform-icon">
       <img src="content_images/mac.png" alt="macOS" class="platform-icon">
       <!-- add Linux later -->  
@@ -79,10 +79,15 @@
     <h2>STAY IN ORBIT</h2>
     <p>It’s easy to get lost in space… join the newsletter for important intel like early announcements and game updates.</p>
 
-    <form class="newsletter__form" method="post" action="/subscribe">
+    <form class="newsletter__form" method="POST" action="https://formsubmit.co/c0e7248962e246a857200425fb7e0356">
+      <!-- FormSubmit hidden inputs -->
+      <input type="text" name="_honey" style="display: none;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://devoidgame.com/received">
+
       <label class="sr-only" for="nl-email">Email address</label>
       <input id="nl-email" name="email" type="email" inputmode="email"
-             autocomplete="email" placeholder="you@domain.com" required />
+             autocomplete="email" placeholder="Enter your email" required />
       <button type="submit" class="nl-btn">JOIN NOW <span aria-hidden="true">▶</span></button>
     </form>
   </div>
@@ -92,7 +97,7 @@
     <picture>
       <!-- swap to mobile art under 768px -->
       <source media="(max-width: 768px)" srcset="content_images/newsletter_art_mobile.png">
-      <img src="content_images/newsletter_art_desktop.png" alt="" role="presentation">
+      <img src="content_images/newsletter_art_desktop.png" alt="#" role="presentation">
     </picture>
   </div>
 </section>
@@ -109,11 +114,17 @@
     </div>
 
     <div class="footer-right">
-      <a href="content_images/facebook.png" target="_blank">
-        <img src="content_images/facebook.png" alt="Facebook" class="social-icon">
+      <a href="https://x.com/GameDevoid" target="_blank">
+        <img src="content_images/x.png" alt="X" class="social-icon">
       </a>
-      <a href="content_images/instagram.png" target="_blank">
-        <img src="content_images/instagram.png" alt="Instagram" class="social-icon">
+      <a href="https://www.instagram.com/luminous_bits/" target="_blank">
+        <img src="content_images/ig.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com/@Luminous_Bits" target="_blank">
+        <img src="content_images/yt.png" alt="Youtube" class="social-icon">
+      </a>
+      <a href="https://discord.gg/XHmVf6csD8" target="_blank">
+        <img src="content_images/discord.png" alt="Discord" class="social-icon">
       </a>
     </div>
 
