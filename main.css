@@ -768,6 +768,125 @@ body { background:#000; }
 }
 
 
+
+/* ===== Blog Page Specific ===== */
+.blog-container {
+  padding: 0 var(--page-gutter);
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* Date bar (full width, thin like mockup) */
+.blog-date-bar {
+  background: var(--nav-top);
+  text-align: center;
+  padding: 4px 0;
+}
+
+.blog-date {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+/* Hero image (full width) */
+.blog-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Gap between hero and title */
+.blog-gap {
+  height: 24px;
+}
+
+/* Title bar (aligned to gutter, not full bleed) */
+.blog-title-strip {
+  background: var(--nav-top);
+  padding: 6px 0;
+  text-align: left; /* Left-aligned title */
+}
+
+.blog-title {
+  margin: 0;
+  font: 800 clamp(20px, 3.2vw, 28px)/1.1 "Poppins", sans-serif;
+  color: #000;
+  display: inline-block;
+  padding-left: 0; /* Extend to left edge, no extra padding */
+  padding-left: var(--page-gutter);  /* Move out to website's left edge */
+}
+
+/* Body text */
+.blog-body {
+  font: 500 clamp(14px, 1.5vw, 18px)/1.6 "Roboto Mono", monospace;
+  padding: 20px 0;
+  color: #fff;
+  line-height: 1.6;
+  text-align: left; /* Left-aligned body */
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding-left: var(--page-gutter); /* Flush with global gutter and newsletter */
+  padding-right: var(--page-gutter);
+  background-color: #1F1F1F;
+}
+
+
+/* Nav section */
+.blog-nav {
+  display: flex;
+  justify-content: space-between; /* Align Previous left, Next right */
+  background: var(--nav-bg);
+  padding: 20px 0;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+.blog-nav__btn {
+  text-align: center;
+  font: 800 16px/1 "Roboto Mono", monospace;
+  text-decoration: none;
+  padding: 16px 20px;
+  background: var(--nav-top);
+  color: #000;
+  transition: background-color .2s ease, color .2s ease;
+  width: 110px; /* Fixed width in pixels */
+  display: inline-block;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow if text is too long */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+.blog-nav__btn:hover {
+  background: #1c1a1a;
+  color: var(--nav-top);
+  padding-left: var(--page-gutter); /* Flush with global gutter and newsletter */
+  padding-right: var(--page-gutter);
+}
+
+/* Mobile stack */
+@media (max-width: 640px) {
+  .blog-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .blog-nav__btn {
+    padding-left: var(--page-gutter); /* Flush with global gutter and newsletter */
+    padding-right: var(--page-gutter);
+    width: 89%; /* Full width on mobile */
+    margin-bottom: 10px;
+  }
+  .blog-nav__btn:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+
+
 footer {
     width: 100%; 
     background-color: #000000; 
@@ -824,7 +943,7 @@ footer {
 .social-icon {
   position: relative;
   z-index: 5;
-  width: 1.5vw;  /* keep size */
+  width: 2.15vw;  /* keep size */
   height: auto;
   transition: transform 0.3s ease;
 }
@@ -845,7 +964,7 @@ footer {
     font-weight: 400;
     font-size: 0.8vw;
     color: #bbbbbb; /* lighter gray for Contact Us */
-    margin-bottom: 2px; /* slightly closer gap */
+    margin-bottom: 1px; /* slightly closer gap */
 }
 
 .footer-copyright {
